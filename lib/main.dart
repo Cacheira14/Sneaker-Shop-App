@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sneakers/models/cart.dart';
 import 'package:sneakers/pages/intro_page.dart';
 
 void main() {
@@ -12,9 +14,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: IntroPage(),
+    return ChangeNotifierProvider(
+      create: (context) => Cart(),
+      builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: IntroPage(),
+      ),
     );
   }
 }
